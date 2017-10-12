@@ -16,13 +16,12 @@ public class IndexController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView index(){
 		ModelAndView mv=new ModelAndView("index");
-		Customer customer=new Customer();
+/*		Customer customer=new Customer();
 		customer.setName("Mukil");
 		customer.setEmail("mukil@example.com");
 		customer.setAddress("Madurai");
 		customer.setContact("9876543210");
-		customerDao.save(customer);
-		
+		customerDao.save(customer)*/;		
 		return mv;
 	}
 	@RequestMapping(value="/login", method=RequestMethod.GET)
