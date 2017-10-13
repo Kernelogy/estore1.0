@@ -22,6 +22,9 @@ public class Customer {
 	private String contact;
 	@Column(name="cus_address")
 	private String address;
+	@Column(name="cus_password")
+	private String password;
+	
 	
 	public int getId() {
 		return id;
@@ -52,6 +55,12 @@ public class Customer {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public void setPassword(String password){
+		this.password=password;
+	}
+	public String getPassword(){
+		return password;
 	}
 	
 }

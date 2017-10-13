@@ -46,4 +46,36 @@ public class CustomerController {
 		return mv;
 	 }
 	
+/*	@RequestMapping(value="/validate", method=RequestMethod.POST)
+	public ModelAndView validate(HttpServletRequest request, HttpServletResponse response){		
+		String email=request.getParameter("txtEmail");
+		String password=request.getParameter("txtPassword");
+		Customer customer=customerDao.findById(request.getParameter("txtEmail"));	
+		//request.setAttribute("customer", customer );
+		ModelAndView mv=null;
+		if(email.equals(customer.getEmail()) && password.equals(customer.getPassword())){
+			mv=new ModelAndView("sucess");
+			mv.getModelMap().addAttribute("customer", customer);
+		}else{
+			mv=new ModelAndView("failure");		
+			mv.getModelMap().addAttribute("customer", customer);
+		}			
+		return mv;
+	}*/
+	@RequestMapping(value="/validate", method=RequestMethod.POST)
+	public ModelAndView validate(HttpServletRequest request, HttpServletResponse response){
+		String email=request.getParameter("txtEmail");
+		String password=request.getParameter("txtPassword");		
+		ModelAndView mv=null;
+		if(customerDao.validate(email, password)){
+			mv=new ModelAndView("sucess");
+			//mv.getModelMap().addAttribute("customer", customer);
+		}else{
+			mv=new ModelAndView("failure");		
+			//mv.getModelMap().addAttribute("customer", customer);
+		}			
+		return mv;
+	
+	}
+	
 }

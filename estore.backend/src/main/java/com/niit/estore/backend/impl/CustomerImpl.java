@@ -1,7 +1,9 @@
 package com.niit.estore.backend.impl;
 
+import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +36,35 @@ private SessionFactory sessionFactory;
 		
 	}
 
-	public Customer findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public Set<Customer> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public Customer findById(String email) {
+		Session session=sessionFactory.openSession();
+		String hql = "FROM Customer C WHERE C.email = '" + email +"'" ;
+		Query query = session.createQuery(hql);
+		List results = query.list();
+		if(results!=null)
+			return (Customer) results.get(0);
+		
+		else
+			return null;		
+		
+	}
+	public boolean validate(String email, String password) {
+		Session session=sessionFactory.openSession();
+		String hql = "FROM Customer C WHERE C.email = '" + email +"' AND C.password ='" + password + "'" ;
+		Query query = session.createQuery(hql);
+		List results = query.list();
+		if(results!=null)
+			return true;
+		
+		else
+			return false;		
+		
+	}
+	
 
 }
