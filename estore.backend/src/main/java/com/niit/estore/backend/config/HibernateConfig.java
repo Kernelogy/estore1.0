@@ -13,6 +13,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.estore.backend.model.Address;
 import com.niit.estore.backend.model.Customer;
 import com.niit.estore.backend.model.Product;
 
@@ -46,7 +47,8 @@ public class HibernateConfig {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 		builder.addProperties(getHibernateProperties());
 		builder.addAnnotatedClass(Customer.class);
-		//builder.addAnnotatedClass(Product.class);
+		builder.addAnnotatedClass(Address.class);
+		builder.addAnnotatedClass(Product.class);
 		return builder.buildSessionFactory();
 	}
 

@@ -1,10 +1,12 @@
 package com.niit.estore.backend.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,9 +22,10 @@ public class Customer {
 	private String email;
 	@Column(name="cus_contact")
 	private String contact;
-	@Column(name="cus_address")
-	private String address;
-	@Column(name="cus_password")
+	//@Column(name="cus_address")
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Address address;
+	@Column(name="cus_password")	
 	private String password;
 	
 	
@@ -50,10 +53,10 @@ public class Customer {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 	public void setPassword(String password){
