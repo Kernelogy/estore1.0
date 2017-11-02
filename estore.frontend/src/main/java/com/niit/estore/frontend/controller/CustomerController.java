@@ -2,6 +2,7 @@ package com.niit.estore.frontend.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,9 +39,9 @@ public class CustomerController {
 		customer.setContact(contact);
 		customer.setAddress(address);*/
 		Customer customer=new Customer();
-		customer.setName("Mukil");
-		customer.setEmail("mukil@example.com");
-		customer.setPassword("passcode");
+		customer.setName("admin");
+		customer.setEmail("admin@example.com");
+		customer.setPassword("admin");
 		customer.setContact("876543210");
 		Address address=new Address();
 		address.setCity("Madurai");
@@ -79,7 +80,9 @@ public class CustomerController {
 		String password=request.getParameter("txtPassword");		
 		ModelAndView mv=null;
 		if(customerDao.validate(email, password)){
-			mv=new ModelAndView("sucess");
+			HttpSession session=request.getSession(true);
+			session.setAttribute("email", email);
+			mv=new ModelAndView("redirect: ./");
 			//mv.getModelMap().addAttribute("customer", customer);
 		}else{
 			mv=new ModelAndView("failure");		
@@ -87,6 +90,19 @@ public class CustomerController {
 		}			
 		return mv;
 	
+	}
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public ModelAndView login(){
+		ModelAndView mv=new ModelAndView("login");
+		return mv;
+	}
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response){
+		HttpSession session=request.getSession(false);
+		if(session!=null)
+			session.invalidate();
+		ModelAndView mv=new ModelAndView("redirect: ./");
+		return mv;
 	}
 	
 }

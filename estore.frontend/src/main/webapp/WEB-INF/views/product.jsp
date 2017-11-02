@@ -36,6 +36,9 @@
 				</div>
 			</div>
 		</div>
+		<select>
+			<option value="{c.id}">Category 1</option>
+		</select>
 		<c:forEach items="${products}" var="p">
 		<div class="row">
 			<div class="col-md-10">

@@ -32,11 +32,7 @@ public class IndexController {
 		ModelAndView mv=new ModelAndView("header");
 		return mv;
 	}*/
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public ModelAndView login(){
-		ModelAndView mv=new ModelAndView("login");
-		return mv;
-	}
+
 
 	
 	
