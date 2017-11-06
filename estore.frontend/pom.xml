@@ -19,6 +19,13 @@
   		<artifactId>spring-webmvc</artifactId>
   		<version>4.0.3.RELEASE</version>
   		</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+<!-- <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>4.0.3.RELEASE</version>
+</dependency> -->
+  		
 <dependency>
        <groupId>org.slf4j</groupId>
        <artifactId>slf4j-api</artifactId>
@@ -35,6 +42,22 @@
 	  <artifactId>estore.backend</artifactId>
 	  <version>0.0.1-SNAPSHOT</version>  	
   	</dependency> 
+  	<dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-config</artifactId>
+  		<version>4.0.3.RELEASE</version>
+  		<exclusions>
+  			<exclusion>
+  				<artifactId>spring-asm</artifactId>
+  				<groupId>org.springframework</groupId>
+  			</exclusion>
+  		</exclusions>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework.security</groupId>
+  		<artifactId>spring-security-web</artifactId>
+  		<version>4.0.3.RELEASE</version>
+  	</dependency>  	
   	
   </dependencies>
   <build>

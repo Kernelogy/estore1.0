@@ -11,5 +11,6 @@
 		<input type="text" name="txtEmail" placeholder="Email" /><br>
 		<input type="password" name="txtPassword" placeholder="Password" /><br>
 		<input type="submit" name="butSubmit" value="Login">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	</form>
 </html>

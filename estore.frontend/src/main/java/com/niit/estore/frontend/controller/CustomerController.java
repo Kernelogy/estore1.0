@@ -104,5 +104,10 @@ public class CustomerController {
 		ModelAndView mv=new ModelAndView("redirect: ./");
 		return mv;
 	}
+	@RequestMapping(value="/failure", method=RequestMethod.GET)
+	public ModelAndView failure(){
+		ModelAndView mv=new ModelAndView("failure");
+		return mv;
+	}	
 	
 }
