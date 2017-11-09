@@ -7,9 +7,9 @@
 	<h1>Login Page</h1>
 </body>
 <%@include file="footer.jsp" %>
-	<form action="validate" method="POST">
-		<input type="text" name="txtEmail" placeholder="Email" /><br>
-		<input type="password" name="txtPassword" placeholder="Password" /><br>
+	<form action="login" method="POST">
+		<input type="text" name="username" placeholder="Email" /><br>
+		<input type="password" name="password" placeholder="Password" /><br>
 		<input type="submit" name="butSubmit" value="Login">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 	</form>

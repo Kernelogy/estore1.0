@@ -38,5 +38,8 @@
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
+	<error-page>
+	    <error-code>403</error-code>
+	    <location>/accessDenied</location>
+	</error-page>
 </web-app>

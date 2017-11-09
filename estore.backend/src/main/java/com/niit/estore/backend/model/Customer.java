@@ -27,8 +27,10 @@ public class Customer {
 	private Address address;
 	@Column(name="cus_password")	
 	private String password;
-	
-	
+	@Column(name="cus_role")
+	private String role;
+	@Column(name="cus_enabled")
+	private boolean enabled;
 	public int getId() {
 		return id;
 	}
@@ -59,11 +61,25 @@ public class Customer {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public void setPassword(String password){
-		this.password=password;
-	}
-	public String getPassword(){
+	public String getPassword() {
 		return password;
 	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	
 	
 }

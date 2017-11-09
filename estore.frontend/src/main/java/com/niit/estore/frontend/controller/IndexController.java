@@ -1,5 +1,7 @@
 package com.niit.estore.frontend.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,8 +19,14 @@ public class IndexController {
 	@Autowired
 	private CustomerDao customerDao;
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public ModelAndView index(){
+	public ModelAndView index(HttpServletRequest request, HttpServletResponse response){
 		ModelAndView mv=new ModelAndView("index");
+		Principal principal=request.getUserPrincipal();
+		Customer customer=null;
+		if(principal!=null){
+			customer=customerDao.findById(principal.getName());
+		}
+		mv.getModelMap().addAttribute("customer", customer);
 /*		Customer customer=new Customer();
 		customer.setName("Mukil");
 		customer.setEmail("mukil@example.com");
@@ -27,11 +35,11 @@ public class IndexController {
 		customerDao.save(customer)*/;		
 		return mv;
 	}
-/*	@RequestMapping(value="/header", method=RequestMethod.GET)
-	public ModelAndView header(){
-		ModelAndView mv=new ModelAndView("header");
+	@RequestMapping(value="/accessDenied", method=RequestMethod.GET)
+	public ModelAndView accessDenied(){
+		ModelAndView mv=new ModelAndView("accessDenied");
 		return mv;
-	}*/
+	}
 
 
 	

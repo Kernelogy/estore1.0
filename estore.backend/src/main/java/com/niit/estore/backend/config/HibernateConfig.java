@@ -23,7 +23,7 @@ import com.niit.estore.backend.model.Product;
 public class HibernateConfig {
 	@Autowired
 	@Bean(name ="dataSource")
-	public DataSource dataSource() {
+	public DriverManagerDataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("org.h2.Driver");
 		ds.setUrl("jdbc:h2:tcp://localhost/~/flora");

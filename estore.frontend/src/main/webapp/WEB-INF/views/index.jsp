@@ -4,6 +4,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE HTML>
+<%@page import="java.security.Principal"%>
+<%@page import="java.util.Enumeration"%>
 <html lang="en">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="header.jsp"%>
@@ -22,8 +24,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<%
 				//String user=(String) session.getAttribute("email");
 				//out.println(user);
-			%> 
-			${sessionScope['email']}
+			%>
+			
+			${customer.email}
 		</p>
 		<div class="clearfix"></div>
 	</div>
@@ -50,16 +53,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li><a href="#portfolio" class="page-scroll">Portfolio</a></li>
 						<li><a href="#testimonial" class="page-scroll">Testimonials</a></li>
 						<li><a href="#contact" class="page-scroll">Contact</a></li>
-							<c:if test="${sessionScope['email'] == 'admin@example.com'}">
-							<li><a href="logout" class="page-scroll">Admin Menu</a></li>
+							<c:if test="${customer ne null}">
+								<c:if test="${customer.role eq 'ROLE_ADMIN'}">
+								<li><a href="logout" class="page-scroll">Admin Menu</a></li>
+								</c:if>							
 							</c:if>																
 						<c:choose>
 						
-							<c:when test="${sessionScope['email'] eq null}">
+							<c:when test="${customer eq null}">
 							<li><a href="login" class="page-scroll">Login</a></li>
 							</c:when>
 							<%-- ${sessionScope['email']} --%>
-							<c:when test="${sessionScope['email'] ne null}">
+							<c:when test="${customer ne null}">
 							<li><a href="logout" class="page-scroll">Logout</a></li>
 							</c:when>
 
